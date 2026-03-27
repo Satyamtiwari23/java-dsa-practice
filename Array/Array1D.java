@@ -1,6 +1,5 @@
 
 import java.util.Scanner;
-
 public class Array1D {
     
     // Function to create array
