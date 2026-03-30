@@ -60,5 +60,6 @@ public class Arithmetic {
         System.out.println("\n--- Unary Operators ---");
         increment(x);
         decrement(x);
+        sc.close();
     }
 }
