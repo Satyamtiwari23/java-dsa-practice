@@ -52,5 +52,6 @@ public class Bitwise {
         System.out.println("NOT (~) of first number: " + notOperation(x));
         System.out.println("Left Shift (<<): " + leftShift(x, n));
         System.out.println("Right Shift (>>): " + rightShift(x, n));
+        sc.close();
     }
 }
