@@ -49,5 +49,6 @@ public class Relational{
         System.out.println("Less (<): " + isLess(x, y));
         System.out.println("Greater or Equal (>=): " + isGreaterEqual(x, y));
         System.out.println("Less or Equal (<=): " + isLessEqual(x, y));
+        sc.close();
     }
 }
