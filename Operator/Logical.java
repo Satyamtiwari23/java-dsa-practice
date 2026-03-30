@@ -32,5 +32,6 @@ public class Logical {
         System.out.println("OR (||): " + orOperation(x, y));
         System.out.println("NOT (!) of first value: " + notOperation(x));
         System.out.println("NOT (!) of second value: " + notOperation(y));
+        sc.close();
     }
 }
