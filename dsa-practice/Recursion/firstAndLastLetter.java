@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 public class firstAndLastLetter {
     public static void findIndex(String str ,char ch,int index , int first , int last){
@@ -13,7 +12,7 @@ public class firstAndLastLetter {
             }
             last = index;
         }
-        findIndex(str , ch , index+1 , first , last);
+        findIndex(str , ch , index+1 , first , last); 
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
