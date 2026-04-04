@@ -19,6 +19,7 @@ public class MatrixMultiplication {
         // Condition for multiplication
         if (c1 != r2) {
             System.out.println("Matrix multiplication not possible!");
+            sc.close();
             return;
         }
 
