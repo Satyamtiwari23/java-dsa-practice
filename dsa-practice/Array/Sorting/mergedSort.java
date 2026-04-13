@@ -1,67 +1,69 @@
+/*Merge Sort (devide and conquer algorithm)
+took input of number of elements in array and send in creaArray function which fills the array 
+then sorted the array by first devide the array into two halves until we get single element 
+of array by devide function , and then merge them using merge function and than again took 
+another two halves and merge them and again and again until we get the whole array in the
+merged array in merge function and then copy the merged array to original array and print 
+the array which is now sorted.
+*/
 import java.util.Scanner;
 public class mergedSort {
-    static Scanner sc = new Scanner(System.in);
-    static void printArray(int arr[]) {
-        System.out.println("Sorted array:");
-        for (int i = 0; i < arr.length; i++) {
+    public static void createArray(int arr[] , Scanner sc){
+        for(int i=0; i<arr.length; i++){
+            System.out.print("Enter element " + (i+1) + ": ");
+            arr[i] = sc.nextInt();
+        }
+    }
+
+    public static void printArray(int arr[] , int start , int end){
+        for(int i=start; i<=end; i++){
             System.out.print(arr[i] + " ");
         }
         System.out.println();
     }
-    public static void createArray(int arr[]) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print("Enter element " + (i + 1) + ": ");
-            arr[i] = sc.nextInt();
-        }
-        sc.close();
-    }
 
-    public static void devide(int arr[], int left, int right) {
-        if(left >= right){
+    public static void devideArray(int arr[] , int start , int end){
+        if(start >= end){
             return;
         }
-        int mid = left + (right - left) / 2;
-        devide(arr , left , mid);
-        devide(arr , mid + 1 , right);
-        merge(arr , left , mid , right);
+        int mid = start + (end - start)/2;
+        devideArray(arr , start , mid);
+        devideArray(arr , mid + 1 , end);
+        merge(arr , start , mid , end);
     }
-    public static void merge(int arr[], int left,int mid , int right) {
-        int merged[] = new int[right - left + 1];
-        int arr1 = left;
-        int arr2 = mid + 1;
-        int x = 0;
-        while(arr1 <= mid && arr2 <= right){
-            if(arr[arr1] < arr[arr2]){
-                merged[x] = arr[arr1];
-                x++;
-                arr1++;
-            }else{
-                merged[x] = arr[arr2];
-                x++;
-                arr2++;
+
+    public static void merge(int arr[] , int start , int mid , int end){
+        int merged[] = new int[end - start + 1];
+        int indx1 = start , indx2 = mid + 1 , x = 0;
+        while(indx1 <= mid && indx2 <= end){
+            if(arr[indx1] <= arr[indx2]){
+                merged[x++] = arr[indx1++];
+            }
+            else{
+                merged[x++] = arr[indx2++];
             }
         }
-        while(arr1 <= mid){
-            merged[x] = arr[arr1];
-            x++;
-            arr1++;
+        while(indx1 <= mid){
+            merged[x++] = arr[indx1++];
         }
-        while(arr2 <= right){
-            merged[x] = arr[arr2];
-            x++;
-            arr2++;
+        while(indx2 <= end){
+            merged[x++] = arr[indx2++];
         }
-        for(int i = 0, j = left;j < arr.length && i < merged.length; i++, j++){
+        for(int i=0, j=start;j < arr.length && i<merged.length; i++, j++){
             arr[j] = merged[i];
         }
     }
+
+
+
     public static void main(String[] args) {
-        System.out.print("Enter the number of elements: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements in array: ");
         int n = sc.nextInt();
         int arr[] = new int[n];
-        createArray(arr);
-        devide(arr, 0,arr.length - 1);
-        printArray(arr);
-        sc.close();
+        createArray(arr , sc);
+        devideArray(arr , 0 , arr.length - 1);
+        System.out.println("Sorted array:");
+        printArray(arr , 0 , arr.length - 1);
     }
 }
